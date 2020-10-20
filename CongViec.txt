@@ -1,0 +1,6 @@
+Trí: danh sách + thuê phòng (frm main)
+Tùng: tìm kiếm (frm main) + nhân viên
+Kiên: trả phòng (frm main) + hóa đơn
+Minh: frmThongTinPhong
+Tiến: frmDangNhap
+Son: frmKhachHang
