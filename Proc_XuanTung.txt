@@ -1,0 +1,89 @@
+CREATE PROC [dbo].[CHECKCMND] @cmnd nvarchar(15)
+AS
+BEGIN
+SELECT
+CASE
+WHEN EXISTS(SELECT * FRom NhanVien WHERE NhanVien.SoCMT = @cmnd) THEN 1
+WHEN NOT EXISTS(SELECT * FRom NhanVien WHERE NhanVien.SoCMT = @cmnd) THEN 0
+END AS TonTai
+END
+
+CREATE PROC [dbo].[MANVMAX]
+@chucvu char(12)
+AS
+BEGIN
+	IF (EXISTS (SELECT * FROM NhanVien WHERE ChucVu = @chucvu))
+	BEGIN
+	SELECT TOP(1)(CAST(RIGHT(MaNV, 5) AS INT)) as MaLonNhat FROM NHANVIEN WHERE ChucVu = @chucvu ORDER BY (CAST(RIGHT(MaNV, 5) AS INT)) DESC
+	END
+	ELSE
+	BEGIN
+	SELECT 0 as MaLonNhat
+	END
+END
+
+CREATE PROC [dbo].[SELECTNhanVien]
+	@manhanvien char(7)
+AS
+BEGIN
+	SELECT 
+		HoTen,
+		CONVERT(VARCHAR(10),NgaySinh, 103) as NgaySinh,
+		GioiTinh,
+		DiaChi,
+		SDT,
+		SoCMT,
+		ChucVu
+	FROM NhanVien WHERE NhanVien.MaNV = @manhanvien
+END
+
+CREATE PROC [dbo].[SELECTNHANVIENTHEOTUKHOA] 
+@tukhoa nvarchar(20)
+AS
+BEGIN
+	SELECT NhanVien.MaNV as N'Mã nhân viên', 
+		HoTen as N'Họ tên', 
+		GioiTinh as N'Giới tính',
+		SDT as N'Số điện thoại'
+		
+		FROM NhanVien WHERE (NhanVien.MaNV like '%'+@tukhoa + '%' OR lower(HoTen) like '%'+lower(@tukhoa) + '%' OR SDT like '%'+@tukhoa + '%' )
+END
+
+CREATE PROC [dbo].[THEMNHANVIEN]
+@manhanvien char(7),
+@hoten char(27),
+@ngaysinh date,
+@gioitinh char(3),
+@socmnd char(9),
+@diachi char(50),
+@sdt char(10),
+@chucvu char(12),
+@password char(16)
+AS
+BEGIN
+	INSERT INTO DangNhap(UserName, PassWords) VALUES (@manhanvien, @password)
+	INSERT INTO NhanVien(MaNV, UserName, HoTen, NgaySinh, GioiTinh, SoCMT, DiaChi, SDT, ChucVu)
+	VALUES (@manhanvien, @manhanvien, @hoten, @ngaysinh, @gioitinh, @socmnd, @diachi, @sdt, @chucvu)
+END
+
+CREATE PROC [dbo].[UPDATENV]
+@manhanvien char(7),
+@hoten char(27),
+@ngaysinh date,
+@gioitinh char(3),
+@socmnd char(9),
+@diachi char(50),
+@sdt char(10),
+@chucvu char(12)
+AS
+BEGIN
+	UPDATE NhanVien SET
+	HoTen = @hoten,
+	NgaySinh = @ngaysinh,
+	GioiTinh = @gioitinh,
+	SoCMT = @socmnd,
+	DiaChi = @diachi,
+	SDT = @sdt,
+	ChucVu = @chucvu
+	WHERE MaNV = @manhanvien
+END

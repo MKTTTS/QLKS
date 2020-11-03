@@ -13,3 +13,18 @@ D:\Thuc Tap Nhom\QL Khach San\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.c
 D:\Thuc Tap Nhom\QL Khach San\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
 D:\Thuc Tap Nhom\QL Khach San\QLKS\QLKS\obj\Debug\QLKS.exe
 D:\Thuc Tap Nhom\QL Khach San\QLKS\QLKS\obj\Debug\QLKS.pdb
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\bin\Debug\QLKS.exe.config
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\bin\Debug\QLKS.exe
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\bin\Debug\QLKS.pdb
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.FormDangNhap.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.FormMain.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.FormNhanVien.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.FormThongTinKH.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.FormThongTinPhong.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.FormThongTinPhong_KH.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.Properties.Resources.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.exe
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.pdb
