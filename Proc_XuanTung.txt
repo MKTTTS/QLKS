@@ -87,3 +87,12 @@ BEGIN
 	ChucVu = @chucvu
 	WHERE MaNV = @manhanvien
 END
+
+CREATE PROC [dbo].[SELECTKHACHHANG]
+@tukhoa nvarchar(30)
+AS
+BEGIN
+SELECT KhachHang.TenKH as N'Tên khách hàng', KhachHang.GioiTinh as N'Giới tính', CONVERT(VARCHAR(10),KhachHang.NgaySinh, 103) as N'Ngày sinh', KhachHang.SoCMT as N'Số CMND', 
+KhachHang.SoDT as N'Số điện thoại', KhachHang.QueQuan as N'Quên quán', KhachHang.QuocTich as N'Quốc tịch' FROM KhachHang
+WHERE TenKH like '%'+@tukhoa+'%' OR SoCMT like '%'+@tukhoa+'%' OR SoDT like '%'+@tukhoa+'%'
+END

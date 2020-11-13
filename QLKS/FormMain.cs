@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View;
 
 namespace QLKS
 {
@@ -19,7 +20,11 @@ namespace QLKS
           public FormMain()
           {
                InitializeComponent();
-          }
+            this.radioButtonPhong.Checked = true;
+            this.panelTheoPhong.Visible = true;
+            this.panelKH.Visible = false;
+
+        }
 
           private void FormMain_Load(object sender, EventArgs e)
           {
@@ -64,5 +69,30 @@ namespace QLKS
 
                }
           }
-     }
+
+        private void radioButtonPhong_CheckedChanged(object sender, EventArgs e)
+        {
+            this.panelTheoPhong.Visible = true;
+            this.panelKH.Visible = false;
+            this.dtgvTimKiem.DataSource = null;
+        }
+
+        private void radioButtonKH_CheckedChanged(object sender, EventArgs e)
+        {
+            this.panelKH.Visible = true;
+            this.panelTheoPhong.Visible = false;
+            this.dtgvTimKiem.DataSource = null;
+        }
+
+        
+
+        private void buttonTimkiemKH_Click(object sender, EventArgs e)
+        {
+            var db = new DatabaseNV();
+            List<CustomerParameter> lst = new List<CustomerParameter>();
+            lst.Add(new CustomerParameter() { key = "@tukhoa", value = this.textBoxKhachHang.Text });
+            string sql = "SELECTKHACHHANG";
+            this.dtgvTimKiem.DataSource = db.SelectData(sql, lst);
+        }
+    }
 }
