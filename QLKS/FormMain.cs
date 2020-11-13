@@ -94,5 +94,41 @@ namespace QLKS
             string sql = "SELECTKHACHHANG";
             this.dtgvTimKiem.DataSource = db.SelectData(sql, lst);
         }
+
+        private void buttonTimkiemPhong_Click(object sender, EventArgs e)
+        {
+            string trangthai1 = "";
+            string trangthai2 = "";
+            string trangthai3 = "";
+            if (this.checkBoxAll.Checked == true)
+            {
+                trangthai1 = "Het";
+                trangthai2 = "Coc";
+                trangthai3 = "Trong";
+            }
+            else
+            {
+                if(this.checkBoxDattruoc.Checked == true)
+                {
+                    trangthai2 = "Coc";
+                }
+                if(this.checkBoxThue.Checked == true)
+                {
+                    trangthai1 = "Het";
+                }
+                if(this.checkBoxTrong.Checked == true)
+                {
+                    trangthai3 = "Trong";
+                }
+            }
+            var db = new DatabaseNV();
+            List<CustomerParameter> lst = new List<CustomerParameter>();
+            lst.Add(new CustomerParameter() { key = "@trangthai1", value = trangthai1 });
+            lst.Add(new CustomerParameter() { key = "@trangthai2", value = trangthai2 });
+            lst.Add(new CustomerParameter() { key = "@trangthai3", value = trangthai3 });
+            lst.Add(new CustomerParameter() { key = "maphong", value = this.textBoxPhong.Text });
+            string sql = "SEARCHPHONG";
+            this.dtgvTimKiem.DataSource = db.SelectData(sql, lst);
+        }
     }
 }

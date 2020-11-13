@@ -7,7 +7,7 @@ WHEN EXISTS(SELECT * FRom NhanVien WHERE NhanVien.SoCMT = @cmnd) THEN 1
 WHEN NOT EXISTS(SELECT * FRom NhanVien WHERE NhanVien.SoCMT = @cmnd) THEN 0
 END AS TonTai
 END
-
+----------------------------------------------------------------------------
 CREATE PROC [dbo].[MANVMAX]
 @chucvu char(12)
 AS
@@ -21,7 +21,7 @@ BEGIN
 	SELECT 0 as MaLonNhat
 	END
 END
-
+----------------------------------------------------------------------------
 CREATE PROC [dbo].[SELECTNhanVien]
 	@manhanvien char(7)
 AS
@@ -36,7 +36,7 @@ BEGIN
 		ChucVu
 	FROM NhanVien WHERE NhanVien.MaNV = @manhanvien
 END
-
+----------------------------------------------------------------------------
 CREATE PROC [dbo].[SELECTNHANVIENTHEOTUKHOA] 
 @tukhoa nvarchar(20)
 AS
@@ -48,7 +48,7 @@ BEGIN
 		
 		FROM NhanVien WHERE (NhanVien.MaNV like '%'+@tukhoa + '%' OR lower(HoTen) like '%'+lower(@tukhoa) + '%' OR SDT like '%'+@tukhoa + '%' )
 END
-
+----------------------------------------------------------------------------
 CREATE PROC [dbo].[THEMNHANVIEN]
 @manhanvien char(7),
 @hoten char(27),
@@ -65,7 +65,7 @@ BEGIN
 	INSERT INTO NhanVien(MaNV, UserName, HoTen, NgaySinh, GioiTinh, SoCMT, DiaChi, SDT, ChucVu)
 	VALUES (@manhanvien, @manhanvien, @hoten, @ngaysinh, @gioitinh, @socmnd, @diachi, @sdt, @chucvu)
 END
-
+----------------------------------------------------------------------------
 CREATE PROC [dbo].[UPDATENV]
 @manhanvien char(7),
 @hoten char(27),
@@ -87,7 +87,7 @@ BEGIN
 	ChucVu = @chucvu
 	WHERE MaNV = @manhanvien
 END
-
+----------------------------------------------------------------------------
 CREATE PROC [dbo].[SELECTKHACHHANG]
 @tukhoa nvarchar(30)
 AS
@@ -95,4 +95,17 @@ BEGIN
 SELECT KhachHang.TenKH as N'Tên khách hàng', KhachHang.GioiTinh as N'Giới tính', CONVERT(VARCHAR(10),KhachHang.NgaySinh, 103) as N'Ngày sinh', KhachHang.SoCMT as N'Số CMND', 
 KhachHang.SoDT as N'Số điện thoại', KhachHang.QueQuan as N'Quên quán', KhachHang.QuocTich as N'Quốc tịch' FROM KhachHang
 WHERE TenKH like '%'+@tukhoa+'%' OR SoCMT like '%'+@tukhoa+'%' OR SoDT like '%'+@tukhoa+'%'
+END
+----------------------------------------------------------------------------
+CREATE PROC [dbo].[SEARCHPHONG]
+@trangthai1 varchar(10),
+@trangthai2 varchar(10),
+@trangthai3 varchar(10),
+@maphong varchar(7)
+AS
+BEGIN
+	
+	SELECT Phong.MaPhong as N'Phòng', Phong.LoaiPhong as N'Loại phòng', Phong.GiaPhong as N'Giá phòng', Phong.TinhTrang as N'Tình trạng'
+	FROM Phong 
+	WHERE (TinhTrang = @trangthai1 OR TinhTrang = @trangthai2 OR TinhTrang = @trangthai3) and MaPhong like '%'+@maphong+ '%'
 END

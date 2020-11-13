@@ -608,6 +608,7 @@
             this.buttonTimkiemPhong.TabIndex = 4;
             this.buttonTimkiemPhong.Text = "Tìm kiếm";
             this.buttonTimkiemPhong.UseVisualStyleBackColor = true;
+            this.buttonTimkiemPhong.Click += new System.EventHandler(this.buttonTimkiemPhong_Click);
             // 
             // checkBoxAll
             // 
