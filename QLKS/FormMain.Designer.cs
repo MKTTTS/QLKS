@@ -518,6 +518,7 @@
             this.dtgvTimKiem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvTimKiem.Size = new System.Drawing.Size(1203, 327);
             this.dtgvTimKiem.TabIndex = 0;
+            this.dtgvTimKiem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvTimKiem_CellClick);
             // 
             // groupBox6
             // 

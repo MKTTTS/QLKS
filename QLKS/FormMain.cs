@@ -130,5 +130,25 @@ namespace QLKS
             string sql = "SEARCHPHONG";
             this.dtgvTimKiem.DataSource = db.SelectData(sql, lst);
         }
+
+        private void dtgvTimKiem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if(this.radioButtonPhong.Checked == true)
+                {
+                    var r = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Phòng"].Value.ToString().Trim();
+                    if (!string.IsNullOrEmpty(r))
+                    {
+                        string mp = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Phòng"].Value.ToString().Trim();
+                        string lp = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Loại phòng"].Value.ToString().Trim();
+                        string tt = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Tình trạng"].Value.ToString().Trim();
+                        HistoryOfRoom hs = new HistoryOfRoom(mp, lp, tt);
+                        hs.ShowDialog();
+                    }
+                }
+              
+            }
+        }
     }
 }

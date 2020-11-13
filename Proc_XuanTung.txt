@@ -109,3 +109,14 @@ BEGIN
 	FROM Phong 
 	WHERE (TinhTrang = @trangthai1 OR TinhTrang = @trangthai2 OR TinhTrang = @trangthai3) and MaPhong like '%'+@maphong+ '%'
 END
+----------------------------------------------------------------------------
+CREATE PROC HistoryOfRoom
+@maphong varchar(7),
+@from date,
+@to date
+AS
+BEGIN
+	SELECT ThuePhong.SoDT as N'Số điện thoại', TenKH as 'Họ tên người thuê', NgayThue as N'Ngày thuê', NgayTraPhong as N'Ngày trả phòng'
+	FROM ThuePhong LEFT JOIN KhachHang ON ThuePhong.SoDT = KhachHang.SoDT
+	WHERE (DATEDIFF(Day, @from, NgayThue)) >= 0 AND (DATEDIFF(Day, @to, NgayThue)) < 0 AND ThuePhong.MaPhong = @maphong
+END
