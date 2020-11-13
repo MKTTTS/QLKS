@@ -120,3 +120,11 @@ BEGIN
 	FROM ThuePhong LEFT JOIN KhachHang ON ThuePhong.SoDT = KhachHang.SoDT
 	WHERE (DATEDIFF(Day, @from, NgayThue)) >= 0 AND (DATEDIFF(Day, @to, NgayThue)) < 0 AND ThuePhong.MaPhong = @maphong
 END
+-----------------------------------------------------------------------------
+CREATE PROC [dbo].[HistoryOfCustomer]
+@sdt varchar(10)
+AS
+BEGIN
+	SELECT ThuePhong.MaPhong as N'Phòng', ThuePhong.NgayThue as N'Ngày thuê', ThuePhong.NgayTraPhong as N'Ngày trả phòng'
+	FROM ThuePhong WHERE ThuePhong.SoDT = @sdt
+END

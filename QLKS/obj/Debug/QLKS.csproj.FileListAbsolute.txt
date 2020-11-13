@@ -29,3 +29,4 @@ C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileIn
 C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.exe
 C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.pdb
 C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.HistoryOfRoom.resources
+C:\Users\admin\Desktop\Thuctapnhom\QLKS\QLKS\obj\Debug\QLKS.HistoryOfCustomers.resources

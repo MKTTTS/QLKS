@@ -90,6 +90,12 @@
     <Compile Include="FormThongTinPhong_KH.Designer.cs">
       <DependentUpon>FormThongTinPhong_KH.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoryOfCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoryOfCustomers.Designer.cs">
+      <DependentUpon>HistoryOfCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="HistoryOfRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormThongTinPhong_KH.resx">
       <DependentUpon>FormThongTinPhong_KH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryOfCustomers.resx">
+      <DependentUpon>HistoryOfCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistoryOfRoom.resx">
       <DependentUpon>HistoryOfRoom.cs</DependentUpon>

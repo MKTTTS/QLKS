@@ -147,6 +147,23 @@ namespace QLKS
                         hs.ShowDialog();
                     }
                 }
+                if(this.radioButtonKH.Checked == true)
+                {
+                    var r = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Số điện thoại"].Value.ToString().Trim();
+                    if (!string.IsNullOrEmpty(r))
+                    {
+                        string tenkh = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Tên khách hàng"].Value.ToString().Trim();
+                        string gioitinh = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Giới tính"].Value.ToString().Trim();
+                        string ngaysinh = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Ngày sinh"].Value.ToString().Trim();
+                        string sdt = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Số điện thoại"].Value.ToString().Trim();
+                        string cmnd = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Số CMND"].Value.ToString().Trim();
+                        string quequan = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Quên quán"].Value.ToString().Trim();
+                        string quoctich = this.dtgvTimKiem.Rows[e.RowIndex].Cells["Quốc tịch"].Value.ToString().Trim();
+                        HistoryOfCustomers hs = new HistoryOfCustomers(tenkh, gioitinh, ngaysinh, sdt, cmnd, quequan, quoctich);
+                        hs.ShowDialog();
+
+                    }
+                }
               
             }
         }
