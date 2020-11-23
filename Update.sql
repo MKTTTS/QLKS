@@ -1,0 +1,2 @@
+ALTER TABLE HoaDon
+ADD DaThanhToan BIT DEFAULT 0
