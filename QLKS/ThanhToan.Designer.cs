@@ -429,6 +429,7 @@
             this.ThanhToan_btn.TabIndex = 0;
             this.ThanhToan_btn.Text = "THANH TOÁN";
             this.ThanhToan_btn.UseVisualStyleBackColor = true;
+            this.ThanhToan_btn.Click += new System.EventHandler(this.ThanhToan_btn_Click);
             // 
             // comboBox1
             // 
