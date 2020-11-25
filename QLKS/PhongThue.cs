@@ -8,6 +8,7 @@ namespace QLKS
 {
     public class PhongThue
     {
+        public string MaHD { get; set; }
         public string MaPhong { get; set; }
         public string TenKH { get; set; }
         public DateTime NgaySinh { get; set; }

@@ -88,36 +88,53 @@ namespace QLKS
 
         private void XuatHoaDon_btn_Click(object sender, EventArgs e)
         {
-            DateTime from = ngayThueDateTimePicker.Value;
-            DateTime to = ngayTraPhongDateTimePicker.Value;
-            TimeSpan denta = to - from;
+            if (tongTienTextBox.Text == "")
+            {
+                DateTime from = ngayThueDateTimePicker.Value;
+                DateTime to = ngayTraPhongDateTimePicker.Value;
+                TimeSpan denta = to - from;
 
-            int soNgay = denta.Days;
-            int TongTien = soNgay * int.Parse(giaPhongTextBox.Text);
-            List<CustomerParameter> lstpara = new List<CustomerParameter>();
-            // 
-            //
-            // cần 1 là tạo mã HD tự động
-            // 2 là lấy được mã nhân viên
-            //
-            //
-            //
-            lstpara.Add(new CustomerParameter() { key = "@MaHD", value = "HD0002  " });
-            lstpara.Add(new CustomerParameter() { key = "@MaNV", value = "LT001  " });
-            lstpara.Add(new CustomerParameter() { key = "@SoDT", value = soDTTextBox.Text });
-            lstpara.Add(new CustomerParameter() { key = "@NgayLap", value = DateTime.Today.ToShortDateString() });
-            lstpara.Add(new CustomerParameter() { key = "@TongTien", value = TongTien.ToString() });
+                int soNgay = denta.Days;
+                int TongTien = soNgay * int.Parse(giaPhongTextBox.Text);
+                List<CustomerParameter> lstpara = new List<CustomerParameter>();
 
-            db.Excute("SP_XuatHoaDon", lstpara, null);
-            TimKiem("", "sdt");
+                lstpara.Add(new CustomerParameter() { key = "@MaNV", value = "LT001  " });
+                lstpara.Add(new CustomerParameter() { key = "@SoDT", value = soDTTextBox.Text });
+                lstpara.Add(new CustomerParameter() { key = "@NgayLap", value = DateTime.Today.ToShortDateString() });
+                lstpara.Add(new CustomerParameter() { key = "@TongTien", value = TongTien.ToString() });
+
+                db.Excute("SP_XuatHoaDon", lstpara, null);      // function tạo mã HD tự động bằng sql function
+                TimKiem("", "sdt");
+                MessageBox.Show(tongTienTextBox.Text);
+
+            }
+            else
+            {
+                MessageBox.Show("Phòng đã có Hoá đơn!");
+            }
         }
 
         private void ThanhToan_btn_Click(object sender, EventArgs e)
         {
-            List<CustomerParameter> lstpara = new List<CustomerParameter>();
-            lstpara.Add(new CustomerParameter() { key = "@MaHD", value = "HD0002  " });
-            db.Excute("SP_ThanhToan", lstpara, null);
-            TimKiem("", "sdt");
+            if(daThanhToanTextBox.Text == "True")
+            {
+                MessageBox.Show("Hoá đơn đã Thanh Toán");
+            }
+            else
+            {
+                List<CustomerParameter> lstpara = new List<CustomerParameter>();
+                string MaHD = maHDTextBox.Text;
+                if(MaHD == "")
+                {
+                    MessageBox.Show("Vui lòng thanh toán phòng đã xuất hoá đơn!");
+                    return;
+                }
+                lstpara.Add(new CustomerParameter() { key = "@MaHD", value = MaHD });
+                db.Excute("SP_ThanhToan", lstpara, null);
+                TimKiem("", "sdt");
+                MessageBox.Show("Thanh toán thành công!");
+            }
+
         }
     }
 }
