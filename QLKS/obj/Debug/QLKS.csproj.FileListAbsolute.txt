@@ -44,3 +44,19 @@ E:\Desktop\New folder\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.cache
 E:\Desktop\New folder\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
 E:\Desktop\New folder\QLKS\QLKS\obj\Debug\QLKS.exe
 E:\Desktop\New folder\QLKS\QLKS\obj\Debug\QLKS.pdb
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\bin\Debug\QLKS.exe.config
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\bin\Debug\QLKS.exe
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\bin\Debug\QLKS.pdb
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.csprojAssemblyReference.cache
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.FormDangNhap.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.FormMain.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.FormNhanVien.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.FormThongTinKH.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.FormThongTinPhong.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.FormThongTinPhong_KH.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.Properties.Resources.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.ThanhToan.resources
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.cache
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.exe
+C:\Users\dang tien\Desktop\New folder (5)\QLKS\QLKS\obj\Debug\QLKS.pdb
