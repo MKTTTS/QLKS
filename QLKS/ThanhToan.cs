@@ -136,5 +136,10 @@ namespace QLKS
             }
 
         }
-    }
+
+          private void ThanhToan_Load(object sender, EventArgs e)
+          {
+
+          }
+     }
 }

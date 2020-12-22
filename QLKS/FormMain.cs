@@ -21,6 +21,7 @@ namespace QLKS
         private string CMND;
         string flag = "";
         private int Level;
+          private Form activeF = null;
         
         System.Data.DataTable table = new System.Data.DataTable();
         public FormMain()
@@ -79,10 +80,12 @@ namespace QLKS
                da_MaPhong.Fill(dt_MaPhong);
 
                cbxPhongReady.Items.Clear(); // Moi khi load lai form phai cap nhat danh sach phong
+               cbxPhong.Items.Clear();
 
                for(int i=0;i<dt_MaPhong.Rows.Count;i++)
                {
                     cbxPhongReady.Items.Add(dt_MaPhong.Rows[i]["MaPhong"]);
+                    cbxPhong.Items.Add(dt_MaPhong.Rows[i]["MaPhong"]);
                }
 
 
@@ -160,15 +163,68 @@ namespace QLKS
 
           private void button6_Click(object sender, EventArgs e)
           {
+               SqlConnection sqlCon = new SqlConnection(conString);
+               sqlCon.Open();
+
+               string qry_ThemKH = "insert into KhachHang values ('" + txtHoTen.Text + "','" + dtpNSinh.Value.Date.ToString() + "','" + txtGioiTinh.Text + "','" + soCMND.Text + "','"
+                                      + txtsoDT.Text + "','" + txtQQuan.Text + "','" + txtQuocTich.Text + "')";
+
+               SqlCommand cmd_themKH = new SqlCommand(qry_ThemKH, sqlCon);
+               cmd_themKH.ExecuteNonQuery();
+               cmd_themKH.Cancel();
+
+               int tongSoMa = 0;
+               string qry_TongSoMa = "select count(*) from ThuePhong";
+               SqlCommand cmd_TongSoMa = new SqlCommand(qry_TongSoMa,sqlCon);
+               tongSoMa = (int)cmd_TongSoMa.ExecuteScalar();
+
+               string phanSo0 = "";
+               if (tongSoMa <= 9 && tongSoMa > 0) phanSo0 = "0000";
+               if (tongSoMa <= 99 && tongSoMa >= 10) phanSo0 = "000";
+               if (tongSoMa <= 999 && tongSoMa >= 100) phanSo0 = "00";   
+               if (tongSoMa <= 9999 && tongSoMa >= 1000) phanSo0 = "0";
+               if (tongSoMa <= 99999 && tongSoMa > 10000) phanSo0 = "";
+
+               string maThueMoi = "T" + phanSo0 + (tongSoMa+1).ToString();
+               string qry_thuePhong = "insert into ThuePhong values('" + maThueMoi + "','" + txtsoDT.Text + "','" + cbxPhong.Text + "','" + dtpNgayDat.Value.Date.ToString() + "',NULL)";
+               SqlCommand cmd_ThuePhong = new SqlCommand(qry_thuePhong, sqlCon);
+               cmd_ThuePhong.ExecuteNonQuery();
+
+               string qry_ChuyenTinhTrang = "Update Phong set TinhTrang = 'Het' where MaPhong = '" + cbxPhong.Text + "'";
+               SqlCommand cmd_ChuyenTinhTrang = new SqlCommand(qry_ChuyenTinhTrang, sqlCon);
+               cmd_ChuyenTinhTrang.ExecuteNonQuery();
+               cmd_ChuyenTinhTrang.Cancel();
+
+
+               sqlCon.Close();
+               FormMain_Load(sender, e);
 
           }
 
+          private void openChildForm(Form cf)
+          {
+               if (activeF != null) activeF.Close();
+               activeF = cf;
+               cf.TopLevel = false;
+               cf.FormBorderStyle = FormBorderStyle.None;
+               cf.Dock = DockStyle.Fill;
+               this.panelTraPhong.Controls.Add(cf);
+               this.panelTraPhong.Tag = cf;
+               cf.BringToFront();
+               cf.Show();
+          }
         private void Tabphong_Selected(object sender, TabControlEventArgs e)
         {
             this.textBoxMaNV.ReadOnly = true;
             lockcontrol();
             LoadAgain();
+            
             show();
+               ThanhToan tt = new ThanhToan();
+               tt.TopLevel = false;
+               this.panelTraPhong.Controls.Add(tt);
+               openChildForm(tt);
+
         }
         ////XuanTung
         public void LoadAgain()
@@ -527,7 +583,7 @@ namespace QLKS
             txttenkh.ReadOnly = true;
             cbgiotinhkh.Enabled = false;
             cbquoctich.Enabled = false;
-            dtngaysinh.Enabled = false;
+               dateTimePickerKH.Enabled = false;
             btn_add.Enabled = true;
             btn_edit.Enabled = false;
             btn_exit.Enabled = true;
@@ -546,7 +602,7 @@ namespace QLKS
             txttenkh.ReadOnly = false;
             cbgiotinhkh.Enabled = true;
             cbquoctich.Enabled = true;
-            dtngaysinh.Enabled = true;
+               dateTimePickerKH.Enabled = true;
             btn_add.Enabled = true;
             btn_edit.Enabled = false;
             btn_exit.Enabled = true;
@@ -724,7 +780,7 @@ namespace QLKS
             txttenkh.Text = "";
             cbgiotinhkh.SelectedIndex = 0;
             cbquoctich.SelectedIndex = 0;
-            dtngaysinh.Value = DateTime.Now;
+               dateTimePickerKH.Value = DateTime.Now;
         }
 
         private void dgKH_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -739,7 +795,7 @@ namespace QLKS
                 if (!string.IsNullOrEmpty(r))
                 {
                     txttenkh.Text = dgKH.Rows[i].Cells[0].Value.ToString();
-                    dtngaysinh.Text = dgKH.Rows[i].Cells[1].Value.ToString();
+                         dateTimePickerKH.Text = dgKH.Rows[i].Cells[1].Value.ToString();
                     cbgiotinhkh.Text = dgKH.Rows[i].Cells[2].Value.ToString();
                     txtcmt.Text = dgKH.Rows[i].Cells[3].Value.ToString();
                     txtsdt.Text = dgKH.Rows[i].Cells[4].Value.ToString();
@@ -769,7 +825,7 @@ namespace QLKS
                     connection = new SqlConnection(str);
                     connection.Open();
                     command = connection.CreateCommand();
-                    command.CommandText = "INSERT INTO dbo.KhachHang( TenKH , NgaySinh ,GioiTinh ,SoCMT ,SoDT ,QueQuan , QuocTich )VALUES  ( N'" + txttenkh.Text + "' , '" + dtngaysinh.Text + "' , '" + cbgiotinhkh.Text + "' ,  '" + txtcmt.Text + "' , '" + txtsdt.Text + "' ,'" + txtdiachi.Text + "' , N'" + cbquoctich.Text + "')";
+                    command.CommandText = "INSERT INTO dbo.KhachHang( TenKH , NgaySinh ,GioiTinh ,SoCMT ,SoDT ,QueQuan , QuocTich )VALUES  ( N'" + txttenkh.Text + "' , '" + dateTimePickerKH.Text + "' , '" + cbgiotinhkh.Text + "' ,  '" + txtcmt.Text + "' , '" + txtsdt.Text + "' ,'" + txtdiachi.Text + "' , N'" + cbquoctich.Text + "')";
                     command.ExecuteNonQuery();
                     connection.Close();
                     show();
@@ -786,7 +842,7 @@ namespace QLKS
                     connection = new SqlConnection(str);
                     connection.Open();
                     command = connection.CreateCommand();
-                    command.CommandText = "UPDATE dbo.KhachHang SET TenKH='" + txttenkh.Text + "',NgaySinh='" + dtngaysinh.Text + "',GioiTinh='" + cbgiotinhkh.Text + "',SoCMT='" + txtcmt.Text + "',QueQuan='" + txtdiachi.Text + "',QuocTich='" + cbquoctich.Text + "' WHERE SoDT='" + txtsdt.Text + "' ";
+                    command.CommandText = "UPDATE dbo.KhachHang SET TenKH='" + txttenkh.Text + "',NgaySinh='" + dateTimePickerKH.Text + "',GioiTinh='" + cbgiotinhkh.Text + "',SoCMT='" + txtcmt.Text + "',QueQuan='" + txtdiachi.Text + "',QuocTich='" + cbquoctich.Text + "' WHERE SoDT='" + txtsdt.Text + "' ";
                     command.ExecuteNonQuery();
                     connection.Close();
                     show();
@@ -794,6 +850,31 @@ namespace QLKS
             }
         }
 
-        //////////////////
-    }
+          private void btndangxuat_Click(object sender, EventArgs e)
+          {
+               this.Visible = false;
+               FormDangNhap fdn = new FormDangNhap();
+               fdn.ShowDialog();
+               this.Close();
+          }
+
+          private void txtsoDT_KeyPress(object sender, KeyPressEventArgs e)
+          {
+               if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+               {
+                    e.Handled = true;
+               }
+
+               // only allow one decimal point
+               if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+               {
+                    e.Handled = true;
+               }
+          }
+
+          //////////////////
+          //////Kien
+
+          ////////////////////////
+     }
 }
