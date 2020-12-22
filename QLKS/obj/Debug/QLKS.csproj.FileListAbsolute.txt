@@ -95,7 +95,6 @@ C:\Users\sonvb\OneDrive\Máy tính\New folder (2)\QLKS\QLKS\obj\Debug\QLKS.pdb
 D:\Thuc Tap Nhom\QLKS\QLKS\bin\Debug\QLKS.exe.config
 D:\Thuc Tap Nhom\QLKS\QLKS\bin\Debug\QLKS.exe
 D:\Thuc Tap Nhom\QLKS\QLKS\bin\Debug\QLKS.pdb
-D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.csprojAssemblyReference.cache
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.FormDangNhap.resources
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.FormMain.resources
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.FormNhanVien.resources
@@ -108,3 +107,4 @@ D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.cache
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.exe
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.pdb
+D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.csprojAssemblyReference.cache

@@ -73,6 +73,7 @@ namespace QLKS
                dem = dt_DSPhong.Rows.Count;
                dtgvDanhSachphong.DataSource = dt_DSPhong;
 
+
                //Tab Thue Phong
                string qry_MaPhong = "select MaPhong from Phong where TinhTrang='Trong'";
                SqlDataAdapter da_MaPhong = new SqlDataAdapter(qry_MaPhong, sqlCon);
@@ -90,6 +91,16 @@ namespace QLKS
 
 
                sqlCon.Close();
+               txtHoTen.Text = "";
+               soCMND.Text = "";
+               txtsoDT.Text = "";
+               txtSDTdatPhong.Text = "";
+               txtQQuan.Text = "";
+               txtGioiTinh.Text = "";
+               txtQuocTich.Text = "";
+               cbxPhong.Text = "";
+               cbxPhongReady.Text = "";
+               txtTienCoc.Text = "";
           }
 
           private void dtgvDanhSachphong_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -138,17 +149,17 @@ namespace QLKS
 
                string maDat = String.Concat(ngay, thang, nam, cbxPhongReady.Text);
 
-               string qry_DatPhong = "insert into DatPhong values (" + maDat + "," + cbxPhongReady.Text + "," + txtSDTdatPhong.Text + "," 
-                                      + txtTienCoc.Text + ",'" + dtngaydattruoc.Value.ToString() + "','" + dtNgayTraPhongDat.Value.ToString() + "')";
+               string qry_DatPhong = "insert into DatPhong values ('" + maDat.TrimEnd(' ') + "','" + cbxPhongReady.Text.TrimEnd(' ') + "','" + txtSDTdatPhong.Text.TrimEnd(' ') + "','"
+                                      + txtTienCoc.Text.TrimEnd(' ') + "','" + dtngaydattruoc.Value.ToString().TrimEnd(' ') + "','" + dtNgayTraPhongDat.Value.ToString().TrimEnd(' ') + "')";
 
                SqlCommand cmd_DatPhong = new SqlCommand(qry_DatPhong, sqlCon);
                cmd_DatPhong.ExecuteNonQuery();
-               cmd_DatPhong.Cancel();
+               
 
-               string qry_ChuyenTinhTrang = "Update Phong set TinhTrang = 'Het' where MaPhong = '" + cbxPhongReady.Text + "'";
+               string qry_ChuyenTinhTrang = "Update Phong set TinhTrang = 'Het' where MaPhong = '" + cbxPhongReady.Text.TrimEnd(' ') + "'";
                SqlCommand cmd_ChuyenTinhTrang = new SqlCommand(qry_ChuyenTinhTrang, sqlCon);
                cmd_ChuyenTinhTrang.ExecuteNonQuery();
-               cmd_ChuyenTinhTrang.Cancel();
+               
 
                FormMain_Load(sender, e);
 
@@ -198,7 +209,6 @@ namespace QLKS
 
                sqlCon.Close();
                FormMain_Load(sender, e);
-
           }
 
           private void openChildForm(Form cf)
