@@ -97,10 +97,9 @@ namespace QLKS
                 int soNgay = denta.Days;
                 int TongTien = soNgay * int.Parse(giaPhongTextBox.Text);
                 List<CustomerParameter> lstpara = new List<CustomerParameter>();
-
                 lstpara.Add(new CustomerParameter() { key = "@MaNV", value = "LT001  " });
                 lstpara.Add(new CustomerParameter() { key = "@SoDT", value = soDTTextBox.Text });
-                lstpara.Add(new CustomerParameter() { key = "@NgayLap", value = DateTime.Today.ToShortDateString() });
+                lstpara.Add(new CustomerParameter() { key = "@NgayLap", value = DateTime.Today.ToString("dd-MM-yyyy") });
                 lstpara.Add(new CustomerParameter() { key = "@TongTien", value = TongTien.ToString() });
 
                 db.Excute("SP_XuatHoaDon", lstpara, null);      // function tạo mã HD tự động bằng sql function

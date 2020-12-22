@@ -108,3 +108,19 @@ D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.exe
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.pdb
 D:\Thuc Tap Nhom\QLKS\QLKS\obj\Debug\QLKS.csprojAssemblyReference.cache
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\bin\Debug\QLKS.exe.config
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\bin\Debug\QLKS.exe
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\bin\Debug\QLKS.pdb
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.csprojAssemblyReference.cache
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.FormDangNhap.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.FormMain.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.FormNhanVien.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.FormThongTinKH.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.FormThongTinPhong.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.FormThongTinPhong_KH.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.Properties.Resources.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.ThanhToan.resources
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.cache
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.exe
+D:\Thuc Tap Nhom\New folder\QLKS\QLKS\obj\Debug\QLKS.pdb
